@@ -2,14 +2,15 @@ package com.muaz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class BlackJackBoard {
     private List<Player> playerList = new ArrayList<>();
-    private List<Card> deckList;
+    private Stack deck;
     private Player winner;
 
     public BlackJackBoard() {
-        setDeckList(new Deck().createBlackJackDeck());
+        deck = new Deck().createBlackJackDeck();
         Player dealer = new Player();
         dealer.setName("dealer");
 
@@ -21,20 +22,12 @@ public class BlackJackBoard {
         this.playerList.add(player);
     }
 
-    public void setDeckList(List<Card> deckList) {
-        this.deckList = deckList;
-    }
-
     public List<Player> getPlayerList() {
         return playerList;
     }
 
-    public List<Card> getDeckList() {
-        return deckList;
-    }
-
-    public Player getWinner() {
-        return winner;
+    public Stack getDeck() {
+        return deck;
     }
 
     public void setWinner(Player winner) {

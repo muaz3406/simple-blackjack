@@ -1,23 +1,18 @@
 package com.muaz;
 
 import java.util.List;
-import java.util.Random;
+import java.util.Stack;
 
 public class BlackJackService {
 
 
     public static void startGame(BlackJackBoard blackJackBoard) {
-        List<Card> deckList = blackJackBoard.getDeckList();
+        Stack<Card> deck = blackJackBoard.getDeck();
         List<Player> playerList = blackJackBoard.getPlayerList();
 
-        Random rand = new Random();
-
         for(Player player : playerList) {
-            for (int i = 0; i < 2; i++) {
-                int randomIndex = rand.nextInt(deckList.size());
-                Card card = deckList.get(randomIndex);
-                player.addCard(card);
-            }
+           player.addCard(deck.pop());
+           player.addCard(deck.pop());
         }
     }
 
